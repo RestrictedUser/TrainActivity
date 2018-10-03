@@ -1,0 +1,21 @@
+.jumbotron{
+    background-color: lightblue;
+}
+
+body{
+    background-color:beige;
+}
+
+#txt {
+    padding-top: 50px;
+    text-align: center;
+}
+
+img{
+    padding-left: 100px;
+    
+}
+
+.text-center{
+    font-family: fantasy;
+}
