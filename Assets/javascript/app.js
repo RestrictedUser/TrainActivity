@@ -111,7 +111,7 @@ $("#delete").on('click', function(event){
             var s = today.getSeconds();
             m = checkTime(m);
             s = checkTime(s);
-            document.getElementById('txt').innerHTML =
+            document.getElementById('txt').innerHTML = "Current Time: " +
             h + ":" + m + ":" + s;
             var t = setTimeout(startTime, 500);
         }
