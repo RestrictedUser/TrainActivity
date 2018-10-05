@@ -1,5 +1,6 @@
 .jumbotron{
     background-color: lightblue;
+    
 }
 
 body{
@@ -18,4 +19,8 @@ img{
 
 .text-center{
     font-family: fantasy;
+}
+
+.bg-light{
+    background-color: lightblue!important;
 }

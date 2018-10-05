@@ -1,4 +1,4 @@
-
+// Delete button needs to be fixed. Have to find out how to remove the child_added to delete because you cant delete the datebase data
 
 var config = {
 apiKey: "AIzaSyDGPV_2V0cMf8EQbXr2-cw2-SLbT4djRaY",
@@ -15,11 +15,15 @@ var database = firebase.database();
 
 // starting values
 
+// Train name and destination
 var trainName= "";
-var currentTime = "";
 var trainDest = "";
+
+
+// time related var
+var trainFreq = ""
+var currentTime = "";
 var trainTime = "";
-var trainFreq = "";
 var timeDiff = "";
 var timeRemainder = 0;
 var nextArrival = 0;
@@ -40,13 +44,18 @@ $("#add-train-data").on('click', function(event){
 
     firstTrainInput = moment($('#train-time').val().trim(), "HH:mm").format("HH:mm");
 
-    // if train time is invalid (out of 24hr military time) then display error msg
+    // display error if time is invalid
 
     if(firstTrainInput !== 'Invalid date') {
-        newTrain.name = $("#train-name").val().trim();
-        newTrain.dest= $("#train-destination").val().trim();
+        
         newTrain.firstTrain = firstTrainInput;
+        
+        newTrain.name = $("#train-name").val().trim();
+        
+        newTrain.dest= $("#train-destination").val().trim();
+        
         newTrain.freq = $("#train-freq").val().trim();
+
     } else {
         alert("Please enter a valid First Train Time");
         clearInput();
@@ -60,12 +69,7 @@ $("#add-train-data").on('click', function(event){
 
 });
 
-function clearInput(){
-    $("#train-name").val("");
-    $("#train-destination").val("");
-    $("#train-time").val("");
-    $("#train-freq").val("");
-}
+
 
 // create table
 database.ref().on("child_added", function (snapshot){
@@ -99,9 +103,13 @@ database.ref().on("child_added", function (snapshot){
 });
 
 // Not currently working. Value can be set to "" but as long as database has the data it sends the data back on pageload.
-$("#delete").on('click', function(event){
-    $(database).val("");
-})
+
+
+$("#delete").on('click', function(event) {
+    $("#trainData").val("");
+    console.log("test");
+   
+});
 
         //clock
         function startTime() {
@@ -120,6 +128,16 @@ $("#delete").on('click', function(event){
             if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
             return i;
         }
-// })
+            // clear input values of input elements
+            function clearInput(){
+                $("#train-name").val("");
+
+                $("#train-destination").val("");
+
+                $("#train-time").val("");
+
+                $("#train-freq").val("");
+            }
+
 
 
